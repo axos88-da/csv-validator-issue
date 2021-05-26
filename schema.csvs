@@ -1,0 +1,5 @@
+version 1.1
+@totalColumns 3
+accountId:              regex("RGID\d{11}|\d{10}")
+corporateActionEventId: switch(($accountId/any("1234567890"), regex("\d{1,35}")), empty) and unique($accountId,$corporateActionEventId)
+availableUnits:         regex("\d{1,18}(\.\d{1,6})?") and range(0.000001,*)
